@@ -296,7 +296,11 @@ def dashboard() -> None:
 		st.caption("Investments are recorded separately and excluded from spending analysis.")
 
 
-st.set_page_config(page_title="BAAR Budget Monitor", page_icon=CURRENCY_SYMBOL, layout="wide")
+st.set_page_config(
+    page_title="BAAR Budget Monitor",
+    page_icon=str(Path(__file__).with_name("baarfav.png")),
+    layout="wide",
+)
 init_db()
 st.title("BAAR Budget Monitor")
 st.caption("A local-first view of where your money is going, what is left, and what is approaching its limit.")
