@@ -10,6 +10,7 @@ import streamlit as st
 
 
 DB_PATH = Path(__file__).with_name("budget.db")
+CURRENCY_SYMBOL = "₹"
 INVESTMENT_SUBCATEGORIES = ["Stocks", "ETF", "Mutual funds", "Bonds", "Other"]
 DEFAULT_CATEGORIES = [
 	("expense", "Food"),
@@ -123,7 +124,7 @@ def period_bounds(period: str, months: int) -> tuple[date, date]:
 
 
 def format_money(value: float) -> str:
-	return f"${value:,.2f}"
+	return f"{CURRENCY_SYMBOL}{value:,.2f}"
 
 
 def current_month_forecast() -> tuple[float, float, float]:
@@ -295,7 +296,7 @@ def dashboard() -> None:
 		st.caption("Investments are recorded separately and excluded from spending analysis.")
 
 
-st.set_page_config(page_title="BAAR Budget Monitor", page_icon="$", layout="wide")
+st.set_page_config(page_title="BAAR Budget Monitor", page_icon=CURRENCY_SYMBOL, layout="wide")
 init_db()
 st.title("BAAR Budget Monitor")
 st.caption("A local-first view of where your money is going, what is left, and what is approaching its limit.")
