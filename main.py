@@ -70,10 +70,17 @@ def init_db() -> None:
 			if using_postgres()
 			else "INSERT OR IGNORE INTO categories(kind, name) VALUES (?, ?)"
 		)
-		connection.executemany(
-			adapt_sql(category_insert),
-			DEFAULT_CATEGORIES,
-		)
+		if using_postgres():
+			with connection.cursor() as cursor:
+				cursor.executemany(
+					adapt_sql(category_insert),
+					DEFAULT_CATEGORIES,
+				)
+		else:
+			connection.executemany(
+				category_insert,
+				DEFAULT_CATEGORIES,
+			)
 
 
 def query_df(sql: str, params: tuple = ()) -> pd.DataFrame:
