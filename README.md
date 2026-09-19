@@ -39,3 +39,19 @@ python migrate_to_postgres.py
 ```
 
 The migration copies categories, transactions, and budgets from `budget.db`. Do not commit your connection string or `.streamlit/secrets.toml`.
+
+## Phone app (installable PWA)
+
+The `mobile/` folder is a phone-first installable app for quick transaction entry. It uses the same Supabase `categories` and `transactions` tables as the Streamlit dashboard.
+
+To publish it with GitHub Pages:
+
+1. In the GitHub repository, open **Settings → Pages**.
+2. Choose **Deploy from a branch**, select `main`, and choose `/ (root)`.
+3. Open `https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPOSITORY/mobile/` on your phone.
+4. Tap the settings button and enter your Supabase **Project URL** and public **anon key**. Never use the service-role key.
+5. Install it:
+	- Android Chrome: menu → **Add to Home screen**
+	- iPhone Safari: Share → **Add to Home Screen**
+
+The app stores the public connection details on the device and records data in Supabase. Configure Supabase Row Level Security and authentication before sharing the URL publicly; the current V1 database schema is intended for personal testing.

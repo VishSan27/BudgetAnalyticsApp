@@ -1,0 +1,10 @@
+{
+  "name": "Baa₹ Budget Monitor",
+  "short_name": "Baa₹",
+  "description": "Quick expense, income, and investment entry for BAAR.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f7f1",
+  "theme_color": "#132a24",
+  "orientation": "portrait"
+}
